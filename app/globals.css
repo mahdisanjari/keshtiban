@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+/* ───────────── توکن‌های طراحی کشتی‌بان ───────────── */
+@theme {
+  --font-sans: var(--font-vazirmatn), "Vazirmatn", system-ui, -apple-system,
+    "Segoe UI", Tahoma, sans-serif;
+
+  /* سرمه‌ای */
+  --color-ink-950: #040c19;
+  --color-ink-900: #071730;
+  --color-ink-800: #0b2244;
+  --color-ink-700: #11315f;
+  --color-ink-600: #1a4580;
+
+  /* آبی دریایی */
+  --color-sea-600: #1d62ab;
+  --color-sea-500: #2b7bc9;
+  --color-sea-400: #4d9be3;
+  --color-sea-300: #8cc0f0;
+
+  /* فیروزه‌ای (accent) */
+  --color-aqua-500: #1fb5b0;
+  --color-aqua-400: #3fd0c9;
+  --color-aqua-300: #86e4de;
+
+  /* خاکستری فلزی */
+  --color-steel-50: #f5f7fa;
+  --color-steel-100: #eaeff5;
+  --color-steel-200: #d8e0ea;
+  --color-steel-300: #b6c2d1;
+  --color-steel-400: #8e9db0;
+  --color-steel-500: #68788d;
+  --color-steel-600: #4b5a6e;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-bob: bob 9s ease-in-out infinite;
+  --animate-drift: drift 22s linear infinite;
+  --animate-drift-slow: drift 38s linear infinite;
+  --animate-sweep: sweep 7s linear infinite;
+  --animate-flow: flow 2.4s linear infinite;
+  --animate-ping-soft: ping-soft 3.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  --animate-twinkle: twinkle 4s ease-in-out infinite;
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(3px) rotate(0.25deg); }
+}
+@keyframes drift {
+  from { transform: translateX(0); }
+  to { transform: translateX(-200px); }
+}
+@keyframes sweep {
+  to { transform: rotate(360deg); }
+}
+@keyframes flow {
+  to { stroke-dashoffset: -28; }
+}
+@keyframes ping-soft {
+  0% { transform: scale(0.6); opacity: 0.7; }
+  80%, 100% { transform: scale(2.6); opacity: 0; }
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
+}
+
+/* ───────────── پایه ───────────── */
+html {
+  scroll-padding-top: 5.5rem;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+body {
+  background: var(--color-steel-50);
+  color: var(--color-ink-900);
+  font-family: var(--font-sans);
+  line-height: 1.9;
+  font-feature-settings: "kern", "liga";
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: var(--color-aqua-400); color: var(--color-ink-950); }
+
+:focus-visible {
+  outline: 2px solid var(--color-aqua-400);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ───────────── ابزارهای بصری صنعتی ───────────── */
+.blueprint-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+.blueprint-grid-light {
+  background-image:
+    linear-gradient(to right, rgb(7 23 48 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(7 23 48 / 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* خط‌کش درجه‌بندی‌شده (tick ruler) */
+.ruler {
+  background-image: repeating-linear-gradient(
+    to left,
+    currentColor 0 1px,
+    transparent 1px 10px
+  );
+  mask-image: linear-gradient(to bottom, #000 0 100%);
+}
+
+.text-balance { text-wrap: balance; }
+.text-pretty { text-wrap: pretty; }
+
+/* FAQ: جزئیات بومی (details) */
+details > summary { list-style: none; }
+details > summary::-webkit-details-marker { display: none; }
+
+/* ───────────── کاهش حرکت ───────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
