@@ -16,8 +16,8 @@ export function Process() {
             id="process-title"
             index="۰۶"
             en="How We Work"
-            title="فرایند همکاری، ساده و شفاف"
-            lead="از اولین پیام تا تحویل در بندر، چهار مرحله‌ی مشخص."
+            title="فرایند همکاری"
+            lead="از ارسال درخواست تا تحویل کالا، چهار مرحله‌ی روشن."
           />
         </Reveal>
         <ProcessTrack steps={processSteps} />

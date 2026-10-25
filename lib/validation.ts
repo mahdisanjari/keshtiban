@@ -60,10 +60,12 @@ export function validateField(
       if (value.length > 160 || !EMAIL_RE.test(value)) return "نشانی ایمیل معتبر نیست.";
       return;
     case "port":
-      if (!value) return "بندر موردنظر را انتخاب کنید.";
+      if (!value) return "بندر یا محل تحویل را وارد کنید.";
+      if (value.length < 2) return "نام واردشده بسیار کوتاه است.";
+      if (value.length > 120) return "متن واردشده بیش از حد طولانی است.";
       return;
     case "category":
-      if (!value) return "دسته‌ی موردنیاز را انتخاب کنید.";
+      if (!value) return "گروه کالایی را انتخاب کنید.";
       return;
     case "message":
       if (!value) return "نیاز خود را شرح دهید.";
@@ -87,8 +89,8 @@ export function inquiryToText(f: InquiryFields): string {
   const details = [
     f.name && `نام: ${f.name}`,
     f.company && `شرکت یا کشتی: ${f.company}`,
-    f.port && `بندر: ${f.port}`,
-    f.category && `دسته: ${f.category}`,
+    f.port && `بندر / محل تحویل: ${f.port}`,
+    f.category && `گروه کالایی: ${f.category}`,
     f.phone && `تلفن: ${f.phone}`,
     f.email && `ایمیل: ${f.email}`,
   ].filter(Boolean);

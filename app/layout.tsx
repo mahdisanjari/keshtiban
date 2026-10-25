@@ -12,9 +12,9 @@ const vazirmatn = localFont({
 });
 
 const title =
-  "کشتی‌بان | تأمین ملزومات کشتی و Ship Chandlery در بنادر ایران";
+  "کشتی‌بان | تأمین کالا و ملزومات کشتی‌های تجاری (Ship Chandlery) در بنادر ایران";
 const description =
-  "کشتی‌بان، تأمین‌کننده ملزومات مصرفی، روغن و رنگ دریایی، مواد شیمیایی، آذوقه و تجهیزات ایمنی کشتی (LSA و FFA) برای کشتی‌های تجاری در بنادر شمال و جنوب ایران، با تمرکز بر خلیج فارس. Ship Chandlery Iran.";
+  "کشتی‌بان، تأمین‌کننده کالا و ملزومات کشتی‌های تجاری در بنادر شمال و جنوب ایران: روغن و رنگ دریایی، مواد شیمیایی، آذوقه، پوشاک کار و تجهیزات ایمنی (LSA و FFA). درخواست استعلام قیمت. Ship Chandlery Iran.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -23,7 +23,6 @@ export const metadata: Metadata = {
   applicationName: "کشتی‌بان",
   keywords: [
     "کشتی‌بان",
-    "خدمات کشتی",
     "تأمین ملزومات کشتی",
     "فروش ملزومات دریایی",
     "روغن دریایی",
@@ -33,7 +32,7 @@ export const metadata: Metadata = {
     "تأمین مواد غذایی کشتی",
     "Ship Chandlery Iran",
     "Marine Supplier Iran",
-    "Ship Supply Persian Gulf",
+    "Ship Supply Iran",
   ],
   alternates: { canonical: "/" },
   openGraph: {

@@ -3,7 +3,7 @@
 import { CircleAlert, CircleCheck, LoaderCircle, Mail, MessageCircle, Send } from "lucide-react";
 import { useId, useState, type ChangeEvent, type FormEvent, type ReactNode } from "react";
 import { buttonClass, cn } from "@/components/ui/primitives";
-import { categoryOptions, portOptions, ports } from "@/lib/content";
+import { categoryOptions } from "@/lib/content";
 import { IS_DEV, mailtoHref, whatsappHref } from "@/lib/site";
 import {
   emptyInquiry,
@@ -193,23 +193,16 @@ export function ContactForm() {
         <Field id={fid("email")} label="ایمیل" error={errors.email}>
           <input type="email" inputMode="email" autoComplete="email" dir="ltr" {...props("email")} className={cn(props("email").className, "text-right")} />
         </Field>
-        <Field id={fid("port")} label="بندر موردنظر" required error={errors.port}>
-          <select {...props("port")}>
-            <option value="">انتخاب کنید…</option>
-            <optgroup label={portOptions.south}>
-              {ports.filter((p) => p.region === "south").map((p) => (
-                <option key={p.id} value={p.name}>{p.name}</option>
-              ))}
-            </optgroup>
-            <optgroup label={portOptions.north}>
-              {ports.filter((p) => p.region === "north").map((p) => (
-                <option key={p.id} value={p.name}>{p.name}</option>
-              ))}
-            </optgroup>
-            <option value="سایر بنادر / هنوز مشخص نیست">سایر بنادر / هنوز مشخص نیست</option>
-          </select>
+        <Field
+          id={fid("port")}
+          label="بندر یا محل تحویل"
+          required
+          error={errors.port}
+          hint="نام بندر؛ در صورت اطلاع، زمان تقریبی رسیدن کشتی (ETA) را هم در شرح درخواست بنویسید."
+        >
+          <input type="text" {...props("port")} />
         </Field>
-        <Field id={fid("category")} label="دسته‌ی خدمات" required error={errors.category}>
+        <Field id={fid("category")} label="گروه کالایی" required error={errors.category}>
           <select {...props("category")}>
             <option value="">انتخاب کنید…</option>
             {categoryOptions.map((c) => (
@@ -224,7 +217,7 @@ export function ContactForm() {
         label="شرح درخواست"
         required
         error={errors.message}
-        hint="اقلام و مقدار، زمان تقریبی رسیدن کشتی (ETA)، مشخصات یا برند موردنظر و هر توضیح دیگر را بنویسید."
+        hint="اقلام و مقدار موردنیاز، مشخصات یا برند موردنظر و هر توضیح دیگر را بنویسید."
       >
         <textarea rows={6} {...props("message")} className={cn(props("message").className, "resize-y leading-8")} />
       </Field>

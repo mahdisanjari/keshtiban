@@ -35,6 +35,24 @@ const spans: Record<string, string> = {
   consumables: "md:col-span-2 lg:col-span-2",
 };
 
+/**
+ * عنوان کارت‌های هم‌ردیف باید همیشه به اندازه‌ی ۲ خط جا داشته باشد تا زیرعنوان، توضیح و
+ * فهرست اقلام در ستون‌های کنار هم دقیقاً هم‌تراز بمانند (md: دو ستون، lg: سه ستون).
+ */
+const titleLines: Record<string, string> = {
+  lubricants: "md:min-h-[4.5rem]",
+  paints: "md:min-h-[4.5rem]",
+  chemicals: "md:min-h-[4.5rem]",
+  provisions: "md:min-h-[4.5rem] lg:min-h-0",
+};
+
+/** ستون‌بندی فهرست اقلام؛ کارت‌های هم‌ردیف باید ارتفاع فهرست یکسان داشته باشند. */
+const listCols: Record<string, string | undefined> = {
+  provisions: "lg:grid-cols-2",
+  ppe: "sm:grid-cols-2",
+  consumables: "sm:grid-cols-2",
+};
+
 function ItemList({ items, className }: { items: string[]; className?: string }) {
   return (
     <ul className={cn("grid gap-x-6 gap-y-2.5 text-[0.93rem] text-steel-200", className)}>
@@ -70,13 +88,15 @@ function ServiceCard({ cat, index }: { cat: ServiceCategory; index: number }) {
         </span>
       </div>
 
-      <h3 className="mt-7 text-xl font-bold leading-9 text-white">{cat.title}</h3>
+      <h3 className={cn("mt-7 text-xl font-bold leading-9 text-white", titleLines[cat.id])}>{cat.title}</h3>
       <p lang="en" dir="ltr" className="mt-0.5 text-right text-xs font-medium uppercase tracking-[0.18em] text-sea-300/80">
         {cat.en}
       </p>
       <p className="mt-4 text-[0.95rem] leading-8 text-steel-300">{cat.description}</p>
 
-      <div className="mt-6 border-t border-white/10 pt-5">
+      <div className="mt-auto pt-6">
+        <div className="border-t border-white/10 pt-5">
+        {!cat.groups && <p className="mb-3.5 text-xs font-semibold text-steel-500">نمونه اقلام</p>}
         {cat.groups ? (
           <div className={cn("grid gap-6", wide && "sm:grid-cols-2")}>
             {cat.groups.map((g) => (
@@ -96,9 +116,10 @@ function ServiceCard({ cat, index }: { cat: ServiceCategory; index: number }) {
         ) : (
           <ItemList
             items={cat.items}
-            className={cat.id === "ppe" || cat.id === "consumables" ? "sm:grid-cols-2" : undefined}
+            className={listCols[cat.id]}
           />
         )}
+        </div>
       </div>
     </article>
   );
@@ -119,9 +140,9 @@ export function Services() {
             id="services-title"
             tone="dark"
             index="۰۲"
-            en="Supply Categories"
-            title="هفت گروه کالایی، یک مجموعه تأمین"
-            lead="به‌جای هماهنگی با چند تأمین‌کننده جداگانه، نیاز کشتی را یک‌جا برای کشتی‌بان بنویسید. فهرست زیر نمونه‌ی اقلام هر گروه است، نه کاتالوگ قیمت‌دار."
+            en="Products & Supplies"
+            title="کالاها و تجهیزاتی که تأمین می‌کنیم"
+            lead="کشتی‌بان هفت گروه کالایی را برای کشتی‌های تجاری تأمین می‌کند. اقلام هر گروه در زیر به‌عنوان نمونه آمده است؛ فهرست کامل کالاها را شما در درخواست خود مشخص می‌کنید."
           />
         </Reveal>
 
@@ -135,14 +156,14 @@ export function Services() {
 
         <Reveal className="mt-12 flex flex-col items-start justify-between gap-5 border-t border-white/10 pt-8 sm:flex-row sm:items-center">
           <p className="max-w-xl text-sm leading-8 text-steel-400">
-            کالای موردنیاز شما در فهرست نیست؟ نیاز خود را آزادانه شرح دهید؛ تأمین
-            کالا و ملزومات مصرفی دریایی در حوزه‌ی فعالیت ماست.
+            کالای موردنظر شما در فهرست نیست؟ آن را در درخواست خود بنویسید تا
+            امکان تأمین بررسی شود.
           </p>
           <a
             href="#contact"
             className="group inline-flex items-center gap-2.5 font-bold text-aqua-400 transition-colors hover:text-aqua-300"
           >
-            ارسال فهرست نیازها
+            ارسال فهرست اقلام
             <ArrowLeft className="size-4 transition-transform duration-300 ease-out-expo group-hover:-translate-x-1.5" aria-hidden />
           </a>
         </Reveal>

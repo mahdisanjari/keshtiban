@@ -19,7 +19,7 @@ npm run dev
 | اتصال فرم به ایمیل/CRM | `INQUIRY_WEBHOOK_URL` ← `app/api/inquiry/route.ts` |
 | لوگوی رسمی | `brand.logoSrc` در `lib/site.ts` (فایل را در `public/brand/` بگذارید) |
 | عکس واقعی Hero | `brand.heroImage` در `lib/site.ts` (فایل را در `public/images/` بگذارید) |
-| فهرست بنادر شاخص | `ports` در `lib/content.ts` |
+| دو ناحیه‌ی فعالیت (شمال/جنوب) | `coastRegions` در `lib/content.ts` |
 | متن‌ها، دسته‌ها، FAQ | `lib/content.ts` |
 | تصویر Open Graph | `app/opengraph-image.png` (۱۲۰۰×۶۳۰) |
 | فاوآیکون | `app/icon.png` یا `app/icon.svg` |

@@ -15,12 +15,9 @@ export function JsonLd() {
     alternateName: brand.nameEn,
     url: SITE_URL,
     description:
-      "تأمین‌کننده ملزومات مصرفی، آذوقه، مواد شیمیایی و تجهیزات ایمنی کشتی‌های تجاری (Ship Chandlery) در بنادر شمال و جنوب ایران.",
-    slogan: "تأمین مطمئن ملزومات کشتی، در بنادر ایران",
-    areaServed: [
-      { "@type": "Country", name: "Iran" },
-      { "@type": "Place", name: "Persian Gulf" },
-    ],
+      "تأمین‌کننده کالا و ملزومات کشتی‌های تجاری (Ship Chandlery) شامل روغن، رنگ، مواد شیمیایی، آذوقه، پوشاک کار و تجهیزات ایمنی، در بنادر شمال و جنوب ایران.",
+    slogan: "تأمین کالا و ملزومات کشتی‌های تجاری، در بنادر ایران",
+    areaServed: { "@type": "Country", name: "Iran" },
     knowsAbout: [
       "Ship Chandlery",
       "Marine lubricants",

@@ -13,7 +13,7 @@ export const SITE_URL = (
 export const brand = {
   name: "کشتی‌بان",
   nameEn: "Kashtiban",
-  tagline: "تأمین ملزومات کشتی‌های تجاری",
+  tagline: "تأمین کالا و ملزومات کشتی‌های تجاری",
   /**
    * مسیر لوگوی رسمی (SVG یا PNG شفاف، ترجیحاً نسخه روشن/سفید برای زمینه تیره).
    * پس از قرار دادن فایل در public/brand، مقدار را مثلاً "/brand/logo.svg" کنید.
@@ -54,7 +54,7 @@ export function mailtoHref(subject?: string, body?: string): string | null {
 }
 
 export const navItems = [
-  { id: "services", label: "خدمات" },
+  { id: "services", label: "کالاها و خدمات" },
   { id: "about", label: "درباره ما" },
   { id: "coverage", label: "محدوده فعالیت" },
   { id: "contact", label: "تماس با ما" },

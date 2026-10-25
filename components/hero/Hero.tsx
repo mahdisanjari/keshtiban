@@ -118,7 +118,7 @@ export function Hero() {
 
           <h1
             id="hero-title"
-            className="mt-7 text-[2.15rem] font-extrabold leading-[1.42] sm:text-5xl sm:leading-[1.38] xl:text-[3.6rem] xl:leading-[1.34]"
+            className="mt-7 text-[2rem] font-extrabold leading-[1.45] sm:text-[2.6rem] sm:leading-[1.4] xl:text-[3rem] xl:leading-[1.4]"
           >
             <span className="-mb-1 block overflow-hidden pb-2 pt-1">
               <motion.span
@@ -127,7 +127,7 @@ export function Hero() {
                 animate={{ y: 0 }}
                 transition={{ duration: 1.1, delay: 0.3, ease: EASE }}
               >
-                تأمین مطمئن ملزومات کشتی،
+                تأمین کالا و ملزومات کشتی‌های تجاری
               </motion.span>
             </span>
             <span className="block overflow-hidden pb-2 pt-1">
@@ -137,7 +137,7 @@ export function Hero() {
                 animate={{ y: 0 }}
                 transition={{ duration: 1.1, delay: 0.48, ease: EASE }}
               >
-                در بنادر ایران
+                در بنادر شمال و جنوب ایران
               </motion.span>
             </span>
           </h1>
@@ -146,8 +146,9 @@ export function Hero() {
             variants={rise}
             className="mt-6 max-w-xl text-pretty text-base leading-9 text-steel-300 sm:text-lg sm:leading-9"
           >
-            کشتی‌بان، تأمین‌کننده ملزومات مصرفی، تجهیزات ایمنی، مواد غذایی و
-            محصولات تخصصی دریایی برای کشتی‌های تجاری در بنادر شمال و جنوب ایران.
+            کشتی‌بان در حوزه Ship Chandlery فعالیت می‌کند: از روغن و رنگ دریایی
+            و آذوقه تا پوشاک کار و تجهیزات ایمنی، کالاهای موردنیاز کشتی‌های
+            تجاری را از یک مجموعه تأمین می‌کنیم.
           </motion.p>
 
           <motion.div variants={rise} className="mt-9 flex flex-wrap items-center gap-3.5">
@@ -155,7 +156,7 @@ export function Hero() {
               درخواست استعلام قیمت
             </ButtonLink>
             <ButtonLink href="#services" variant="secondary">
-              مشاهده خدمات
+              مشاهده کالاها و خدمات
             </ButtonLink>
           </motion.div>
 
@@ -163,7 +164,7 @@ export function Hero() {
             variants={rise}
             className="mt-10 hidden flex-wrap gap-x-7 gap-y-2 text-sm font-medium text-steel-300 sm:flex"
           >
-            {["کشتی‌های کانتینری", "نفت‌کش‌ها و تانکرها", "کشتی‌های حمل گاز"].map((t) => (
+            {["کشتی‌های کانتینری", "نفت‌کش‌ها و تانکرها", "کشتی‌های حمل گاز", "سایر شناورهای تجاری"].map((t) => (
               <li key={t} className="flex items-center gap-2.5">
                 <span className="size-1 rotate-45 bg-aqua-400" aria-hidden />
                 {t}

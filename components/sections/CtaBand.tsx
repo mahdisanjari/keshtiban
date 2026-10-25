@@ -32,10 +32,10 @@ export function CtaBand() {
             <En>Request for Quotation</En>
           </p>
           <h2 id="cta-title" className="text-balance text-3xl font-extrabold leading-[1.5] sm:text-4xl sm:leading-[1.45]">
-            فهرست نیاز کشتی را بفرستید؛ پیشنهاد قیمت را برایتان آماده می‌کنیم
+            فهرست نیاز کشتی را بفرستید تا پیشنهاد قیمت ارسال کنیم
           </h2>
           <p className="mt-4 text-base leading-9 text-white/80">
-            لازم نیست اقلام را یک‌به‌یک انتخاب کنید. نیاز خود را همان‌طور که دارید شرح دهید.
+            لازم نیست اقلام را یک‌به‌یک انتخاب کنید؛ نیاز خود را همان‌طور که دارید بنویسید.
           </p>
         </Reveal>
 

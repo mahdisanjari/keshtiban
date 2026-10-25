@@ -342,7 +342,7 @@ export function SceneFront() {
         </g>
         <circle cx="1100" cy="752" r="9" fill="none" stroke="#3fd0c9" strokeOpacity="0.6" />
         <g fill="#86e4de" fontSize="15" fontWeight="600" opacity="0.85" className="font-sans">
-          <text x="1114" y="738">خلیج فارس · ۲۷°N ۵۱°E</text>
+          <text x="1114" y="738">تحویل در بندر</text>
           <text x="134" y="822">مسیر تأمین</text>
         </g>
       </g>

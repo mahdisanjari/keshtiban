@@ -17,16 +17,16 @@ export function Footer() {
           <div className="lg:col-span-4">
             <Logo />
             <p className="mt-6 max-w-sm text-sm leading-8 text-steel-400">
-              کشتی‌بان، تأمین‌کننده ملزومات مصرفی، آذوقه، مواد شیمیایی و تجهیزات
-              ایمنی کشتی‌های تجاری در بنادر شمال و جنوب ایران.
+              کشتی‌بان، تأمین‌کننده کالا و ملزومات کشتی‌های تجاری در بنادر شمال
+              و جنوب ایران.
             </p>
             <p className="mt-5 text-xs font-semibold uppercase tracking-[0.22em] text-aqua-400">
               <En>Ship Chandlery · Marine Supplier Iran</En>
             </p>
           </div>
 
-          <nav aria-label="خدمات" className="lg:col-span-3">
-            <h2 className="text-sm font-bold text-white">خدمات</h2>
+          <nav aria-label="کالاها و خدمات" className="lg:col-span-3">
+            <h2 className="text-sm font-bold text-white">کالاها و خدمات</h2>
             <ul className="mt-5 space-y-3 text-sm text-steel-400">
               {serviceCategories.map((c) => (
                 <li key={c.id}>
@@ -66,7 +66,7 @@ export function Footer() {
 
         <div className="mt-16 flex flex-col items-start justify-between gap-3 border-t border-white/10 pt-7 text-xs text-steel-500 sm:flex-row sm:items-center">
           <p>© {persianYear()} کشتی‌بان. تمامی حقوق محفوظ است.</p>
-          <p>تأمین ملزومات مصرفی و تجهیزات ایمنی کشتی‌های تجاری</p>
+          <p>تأمین کالا و ملزومات کشتی‌های تجاری</p>
         </div>
       </div>
 
