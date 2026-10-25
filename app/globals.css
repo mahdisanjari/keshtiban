@@ -134,3 +134,76 @@ details > summary::-webkit-details-marker { display: none; }
     scroll-behavior: auto !important;
   }
 }
+
+/* ───────────── تیتر با ورود کلمه‌به‌کلمه (بدون JS هم متن دیده می‌شود) ───────────── */
+@media (scripting: none) {
+  .rise-word { transform: none !important; }
+}
+
+/* ───────────── سفر کالا: صحنه‌ی پین‌شده ─────────────
+   همه‌چیز تابعی از --p (۰ تا ۱) است که کامپوننت Journey روی .journey می‌نویسد؛
+   پس صحنه به‌همان‌اندازه که جلو می‌رود، عقب هم می‌رود. */
+.journey { --p: 0; }
+
+/* متن/عنصری که بین --a و --b از پیشرفت دیده می‌شود */
+.j-fade,
+.j-on {
+  --o: clamp(0, min((var(--p) - var(--a)) * 25, (var(--b) - var(--p)) * 25), 1);
+}
+.j-fade {
+  opacity: var(--o);
+  transform: translateY(calc((1 - var(--o)) * 24px));
+}
+.j-on { opacity: calc(0.38 + var(--o) * 0.62); }
+.j-on-dot {
+  background-color: rgb(63 208 201 / calc(var(--o) * 1));
+  color: rgb(calc(255 - var(--o) * 251) calc(255 - var(--o) * 243) calc(255 - var(--o) * 230));
+}
+
+/* نوار پیشرفت (راست به چپ) */
+.j-bar { transform: scaleX(var(--p)); transform-origin: right; }
+
+/* خط درخواست روی نقشه */
+.j-route {
+  stroke-dasharray: 1;
+  stroke-dashoffset: calc(1 - clamp(0, (var(--p) - 0.02) / 0.18, 1));
+  opacity: clamp(0, (0.3 - var(--p)) * 12, 1);
+}
+.j-marker { opacity: min(clamp(0, (var(--p) - 0.1) * 20, 1), clamp(0, (0.3 - var(--p)) * 12, 1)); }
+
+/* کشتی به سمت اسکله می‌آید و کم‌کم آرام می‌گیرد */
+.j-ship {
+  --t: clamp(0, (var(--p) - 0.2) / 0.4, 1);
+  transform: translateX(calc((1 - var(--t)) * (1 - var(--t)) * 380px));
+}
+.j-wake { opacity: min(clamp(0, (var(--p) - 0.2) * 20, 1), clamp(0, (0.62 - var(--p)) * 10, 1)); }
+.j-moor { opacity: clamp(0, (var(--p) - 0.6) * 20, 1); }
+
+/* کالاها یکی‌یکی روی عرشه فرود می‌آیند: --ti زمان شروع، --d فاصله‌ی افتادن */
+.j-crate {
+  --c: clamp(0, (var(--p) - var(--ti)) / 0.05, 1);
+  transform: translateY(calc((1 - var(--c)) * (1 - var(--c)) * var(--d) * -1px));
+  opacity: clamp(0, (var(--p) - var(--ti)) * 40, 1);
+}
+.j-cable {
+  --c: clamp(0, (var(--p) - var(--ti)) / 0.05, 1);
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+  transform: scaleY(calc(1 - (1 - var(--c)) * (1 - var(--c)) * var(--k)));
+  opacity: calc(clamp(0, (var(--p) - var(--ti)) * 40, 1) * clamp(0, (1 - var(--c)) * 8, 1));
+}
+.j-done { opacity: clamp(0, (var(--p) - 0.95) * 25, 1); }
+
+/* چیپ‌های بررسی اقلام */
+.j-chip {
+  --o: clamp(0, (var(--p) - var(--a)) * 40, 1);
+  opacity: calc(0.3 + var(--o) * 0.7);
+  background-color: rgb(63 208 201 / calc(var(--o) * 0.16));
+  border-color: rgb(63 208 201 / calc(0.14 + var(--o) * 0.5));
+}
+/* خطوط کارت پیشنهاد */
+.j-line {
+  transform: scaleX(clamp(0, (var(--p) - var(--a)) * 30, 1));
+  transform-origin: right;
+}
+.j-tick { opacity: clamp(0, (var(--p) - 0.68) * 40, 1); }

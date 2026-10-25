@@ -1,3 +1,4 @@
+import { Journey } from "@/components/sections/Journey";
 import { ProcessTrack } from "@/components/sections/ProcessTrack";
 import { Reveal } from "@/components/motion/Reveal";
 import { SectionHeading } from "@/components/ui/primitives";
@@ -8,20 +9,28 @@ export function Process() {
     <section
       id="process"
       aria-labelledby="process-title"
-      className="relative bg-steel-100 py-24 sm:py-32"
+      className="relative bg-steel-100"
     >
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+      <div className="mx-auto max-w-7xl px-5 pb-14 pt-24 sm:px-8 sm:pb-16 sm:pt-32">
         <Reveal>
           <SectionHeading
             id="process-title"
             index="۰۶"
             en="How We Work"
             title="فرایند همکاری"
-            lead="از ارسال درخواست تا تحویل کالا، چهار مرحله‌ی روشن."
+            lead="از ارسال درخواست تا تحویل کالا، چهار مرحله‌ی روشن. با اسکرول، مسیر یک سفارش را دنبال کنید."
           />
         </Reveal>
-        <ProcessTrack steps={processSteps} />
       </div>
+
+      <Journey
+        steps={processSteps}
+        fallback={
+          <div className="mx-auto max-w-7xl px-5 pb-24 sm:px-8 sm:pb-32">
+            <ProcessTrack steps={processSteps} />
+          </div>
+        }
+      />
     </section>
   );
 }

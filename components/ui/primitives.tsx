@@ -1,6 +1,7 @@
 import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import type { ComponentProps, ReactNode } from "react";
+import { RiseText } from "@/components/motion/RiseText";
 import { brand } from "@/lib/site";
 
 export function cn(...parts: (string | false | null | undefined)[]) {
@@ -118,7 +119,7 @@ export function SectionHeading({
 }: {
   index: string;
   en: string;
-  title: ReactNode;
+  title: string;
   lead?: ReactNode;
   tone?: "light" | "dark";
   className?: string;
@@ -146,7 +147,7 @@ export function SectionHeading({
           dark ? "text-white" : "text-ink-900",
         )}
       >
-        {title}
+        <RiseText text={title} />
       </h2>
       {lead && (
         <p

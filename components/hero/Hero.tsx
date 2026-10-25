@@ -12,7 +12,10 @@ import { useRef } from "react";
 import { brand } from "@/lib/site";
 import { useMediaQuery } from "@/components/motion/hooks";
 import { ButtonLink, En } from "@/components/ui/primitives";
+import { RiseText } from "@/components/motion/RiseText";
 import { SceneBack, SceneFront } from "./HeroScene";
+
+const HEADLINE = ["تأمین کالا و ملزومات کشتی‌های تجاری", "در بنادر شمال و جنوب ایران"] as const;
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
@@ -120,25 +123,11 @@ export function Hero() {
             id="hero-title"
             className="mt-7 text-[2rem] font-extrabold leading-[1.45] sm:text-[2.6rem] sm:leading-[1.4] xl:text-[3rem] xl:leading-[1.4]"
           >
-            <span className="-mb-1 block overflow-hidden pb-2 pt-1">
-              <motion.span
-                className="block"
-                initial={reduce ? false : { y: "115%" }}
-                animate={{ y: 0 }}
-                transition={{ duration: 1.1, delay: 0.3, ease: EASE }}
-              >
-                تأمین کالا و ملزومات کشتی‌های تجاری
-              </motion.span>
+            <span className="block">
+              <RiseText text={HEADLINE[0]} baseDelay={250} />
             </span>
-            <span className="block overflow-hidden pb-2 pt-1">
-              <motion.span
-                className="block text-aqua-400"
-                initial={reduce ? false : { y: "115%" }}
-                animate={{ y: 0 }}
-                transition={{ duration: 1.1, delay: 0.48, ease: EASE }}
-              >
-                در بنادر شمال و جنوب ایران
-              </motion.span>
+            <span className="block text-aqua-400">
+              <RiseText text={HEADLINE[1]} baseDelay={250 + HEADLINE[0].split(" ").length * 70} />
             </span>
           </h1>
 
