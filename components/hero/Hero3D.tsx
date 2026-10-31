@@ -70,7 +70,7 @@ export function Hero3D({ onReady }: { onReady: () => void }) {
     };
 
     const schedule = () => {
-      if ("requestIdleCallback" in window) idleId = window.requestIdleCallback(boot, { timeout: 2500 });
+      if (typeof window.requestIdleCallback === "function") idleId = window.requestIdleCallback(boot, { timeout: 2500 });
       else timeoutId = window.setTimeout(boot, 800);
     };
     if (document.readyState === "complete") schedule();
@@ -80,7 +80,7 @@ export function Hero3D({ onReady }: { onReady: () => void }) {
       disposed = true;
       window.removeEventListener("load", schedule);
       window.removeEventListener("pointermove", onPointer);
-      if (idleId && "cancelIdleCallback" in window) window.cancelIdleCallback(idleId);
+      if (idleId && typeof window.cancelIdleCallback === "function") window.cancelIdleCallback(idleId);
       window.clearTimeout(timeoutId);
       observer?.disconnect();
       world?.dispose();
