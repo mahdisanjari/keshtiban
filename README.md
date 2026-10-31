@@ -4,6 +4,8 @@
 
 ## اجرا
 
+Hero از three.js استفاده می‌کند (وابستگی جدید `three`)، پس پس از دریافت آخرین تغییرات حتماً `npm install` بزنید.
+
 ```bash
 npm install
 cp .env.example .env.local   # و مقادیر واقعی را وارد کنید

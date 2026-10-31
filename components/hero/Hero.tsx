@@ -8,11 +8,12 @@ import {
   type Variants,
 } from "motion/react";
 import Image from "next/image";
-import { useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { brand } from "@/lib/site";
 import { useMediaQuery } from "@/components/motion/hooks";
 import { ButtonLink, En } from "@/components/ui/primitives";
 import { RiseText } from "@/components/motion/RiseText";
+import { Hero3D } from "./Hero3D";
 import { SceneBack, SceneFront } from "./HeroScene";
 
 const HEADLINE = ["تأمین کالا و ملزومات کشتی‌های تجاری", "در بنادر شمال و جنوب ایران"] as const;
@@ -41,6 +42,16 @@ export function Hero() {
   const yBack = useTransform(scrollYProgress, [0, 1], [0, 90]);
   const yFront = useTransform(scrollYProgress, [0, 1], [0, 36]);
 
+  // صحنه‌ی SVG تا آماده‌شدن صحنه‌ی سه‌بعدی می‌ماند؛ پس از محوشدن کامل لایه‌ی سه‌بعدی برداشته می‌شود
+  const [threeReady, setThreeReady] = useState(false);
+  const [svgGone, setSvgGone] = useState(false);
+  const handleReady = useCallback(() => setThreeReady(true), []);
+  useEffect(() => {
+    if (!threeReady) return;
+    const id = window.setTimeout(() => setSvgGone(true), 1600);
+    return () => window.clearTimeout(id);
+  }, [threeReady]);
+
   return (
     <section
       id="top"
@@ -61,6 +72,8 @@ export function Hero() {
           />
         ) : (
           <>
+            {!svgGone && (
+              <>
             <motion.div
               className="absolute inset-0 will-change-transform"
               style={parallax ? { y: yBack } : undefined}
@@ -79,6 +92,9 @@ export function Hero() {
             >
               <SceneFront />
             </motion.div>
+              </>
+            )}
+            <Hero3D onReady={handleReady} />
           </>
         )}
       </div>
